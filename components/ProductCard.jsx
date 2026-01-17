@@ -6,7 +6,7 @@ const ProductCard = ({ product, onProductPress }) => {
     <Pressable style={styles.card} onPress={onProductPress}>
       <Image source={{ uri: product.image }} style={styles.image} />
       <View style={styles.info}>
-        <Text style={styles.title}>{product.title}</Text>
+        <Text style={styles.title} numberOfLines={2}>{product.title}</Text>
         <Text style={styles.price}>{product.price} грн</Text>
       </View>
     </Pressable>
@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     marginBottom: 16,
     elevation: 3, // Android shadow
+    width: '48%'
   },
   image: {
     width: "100%",

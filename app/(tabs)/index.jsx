@@ -12,6 +12,8 @@ const HomeScreen = () => {
         <FlatList
           data={PRODUCTS}
           keyExtractor={(item) => item.id}
+          numColumns={2}
+          columnWrapperStyle={styles.row}
           renderItem={({ item }) => (
               <ProductCard product={item} onProductPress={ ()=>router.push(`/product/${item.id}`)} />
           )}
@@ -20,6 +22,11 @@ const HomeScreen = () => {
     );
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  row: {
+    justifyContent: "space-between",
+    paddingHorizontal: 12
+  }
+})
 
 export default HomeScreen;
