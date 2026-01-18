@@ -1,23 +1,31 @@
 import React, { useContext } from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { CartContext } from '../../contexts/CartContext';
+import CartItem from '../../components/CartItem';
 
 const CartScreen = () => {
-    const { items } = useContext(CartContext);
+    const {
+      items,
+      totalPrice
+    } = useContext(CartContext);
+
+
+    if(items.length === 0) {
+        return (
+            <View>
+                <Text>Кошик порожній</Text>
+            </View>
+        );
+    }
 
     return (
         <View>
-            <Text>Cart</Text>
             <FlatList
                 data={items}
                 keyExtractor={(item) => item.id}
                 renderItem={({ item }) => (
-                    <View>
-                        <Text>{item.title}</Text>
-                        <Text>{item.qty} шт</Text>
-                    </View>
+                    <CartItem item={item} />
                 )} />
-
         </View>
     );
 }
