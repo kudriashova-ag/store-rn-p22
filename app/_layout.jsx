@@ -2,6 +2,10 @@ import { StyleSheet } from "react-native";
 import { Stack } from "expo-router";
 import CartProvider from "../contexts/CartContext";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
+
 
 const NavigationLayout = () => {
   return (
@@ -14,11 +18,13 @@ const NavigationLayout = () => {
 
 const RootLayout = () => {
   return (
-    <GestureHandlerRootView>
-      <CartProvider>
-        <NavigationLayout />
-      </CartProvider>
-    </GestureHandlerRootView>
+    <QueryClientProvider client={queryClient}>
+      <GestureHandlerRootView>
+        <CartProvider>
+          <NavigationLayout />
+        </CartProvider>
+      </GestureHandlerRootView>
+    </QueryClientProvider>
   );
 };
 
