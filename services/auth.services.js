@@ -1,6 +1,8 @@
 import { api } from "../api/api"
 
 export const registerRequest = async (values) => { 
+    console.log(values);
+    
     const { data } = await api.post('/register', values)
     return data
 }
